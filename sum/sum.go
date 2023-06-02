@@ -10,7 +10,7 @@ func Sum(word *[size]int32) {
 	numA, numB := getFields(*word)
 
 	numS := sumBin(numA, numB)
-	fmt.Printf("\nnumA %d \nnumB %d \nsum  %d \n", numA, numB, numS)
+	fmt.Printf("\nnumA %d \nnumB %d \nS    %d \n", numA, numB, numS)
 
 	for i := range numS {
 		(*word)[i] = numS[i]

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"Lab8/find"
+	"Lab8/logic"
 	mb "Lab8/matrix_build"
 	"Lab8/sum"
 	"fmt"
@@ -36,5 +38,22 @@ func main() {
 
 	sum.Sum(&row)
 	println("\nWord after:")
+	fmt.Println("Word: ", index, row)
 
+	matrix[index] = row
+
+	println("\nFunctions, input 3d word:")
+	funcRow := mb.StraightRow(matrix[2], 2)
+	fmt.Println(funcRow)
+
+	println("f5 & f10")
+	fmt.Println(logic.Function10(logic.Function5(funcRow)))
+
+	println("f0 & f15")
+	fmt.Println(logic.Function15(logic.Function0(funcRow)))
+
+	println("\nFind:\nAttribute:")
+	fmt.Println(mb.StraightRow(matrix[4], 4))
+
+	fmt.Println("\nResult:\n", find.SearchByMatch(matrix, 1))
 }
