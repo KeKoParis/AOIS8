@@ -46,11 +46,17 @@ func main() {
 	funcRow := mb.StraightRow(matrix[2], 2)
 	fmt.Println(funcRow)
 
-	println("f5 & f10")
-	fmt.Println(logic.Function10(logic.Function5(funcRow)))
+	println("f5")
+	fmt.Println(logic.Function5(funcRow))
 
-	println("f0 & f15")
-	fmt.Println(logic.Function15(logic.Function0(funcRow)))
+	println("f10")
+	fmt.Println(logic.Function10(funcRow))
+
+	println("f0")
+	fmt.Println(logic.Function0(funcRow))
+
+	println("f15")
+	fmt.Println(logic.Function15(funcRow))
 
 	println("\nFind:\nAttribute:")
 	fmt.Println(mb.StraightRow(matrix[4], 4))
