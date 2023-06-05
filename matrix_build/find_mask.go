@@ -3,8 +3,8 @@ package matrix_build
 func FindMask(matrix [size][size]int32, mask [3]int32) ([size]int32, int) {
 
 	for i := 0; i < size; i++ {
-		if compare(StraightRow(matrix[i], i), mask) {
-			return StraightRow(matrix[i], i), i
+		if compare(StraightRow(matrix, i), mask) {
+			return StraightRow(matrix, i), i
 		}
 	}
 

@@ -13,9 +13,9 @@ const size = 16
 func printMatrix(matrix [size][size]int32) {
 	for i := range matrix {
 		if i < 10 {
-			fmt.Println("S", i, "  ", matrix[i])
+			fmt.Println(i, "  ", matrix[i])
 		} else {
-			fmt.Println("S", i, " ", matrix[i])
+			fmt.Println(i, " ", matrix[i])
 		}
 	}
 }
@@ -30,6 +30,10 @@ func main() {
 	println("\nDiagonalized:")
 	printMatrix(matrix)
 
+	mb.Normalize(&matrix)
+	println("\nNormalized, Diagonalized:")
+	printMatrix(matrix)
+
 	v := [3]int32{1, 0, 1}
 
 	println("\nFound word:")
@@ -40,10 +44,13 @@ func main() {
 	println("\nWord after:")
 	fmt.Println("Word: ", index, row)
 
-	matrix[index] = row
+	mb.PutWord(&matrix, row, index)
+
+	println("\nAfter put word:", index)
+	printMatrix(matrix)
 
 	println("\nFunctions, input 3d word:")
-	funcRow := mb.StraightRow(matrix[2], 2)
+	funcRow := mb.StraightRow(matrix, 2)
 	fmt.Println(funcRow)
 
 	println("f5")
@@ -59,7 +66,7 @@ func main() {
 	fmt.Println(logic.Function15(funcRow))
 
 	println("\nFind:\nAttribute:")
-	fmt.Println(mb.StraightRow(matrix[4], 4))
+	fmt.Println(mb.StraightRow(matrix, 4))
 
 	fmt.Println("\nResult:\n", find.SearchByMatch(matrix, 1))
 }

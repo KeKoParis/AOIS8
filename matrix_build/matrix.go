@@ -18,6 +18,17 @@ func GetMatrix() [size][size]int32 {
 	return matrix
 }
 
+func Normalize(matrix *[size][size]int32) {
+	var copyMatrix [size][size]int32
+	for i := range matrix {
+		for j := range matrix[i] {
+			copyMatrix[j][i] = matrix[i][j]
+		}
+	}
+
+	*matrix = copyMatrix
+}
+
 func Diagonalize(matrix *[size][size]int32) {
 	for i := range *matrix {
 		DiagonalizeRow(&matrix[i], i)
@@ -40,7 +51,18 @@ func DiagonalizeRow(row *[size]int32, index int) {
 	*row = currRow
 }
 
-func StraightRow(row [size]int32, index int) [size]int32 {
+func PutWord(matrix *[size][size]int32, row [size]int32, index int) {
+	Normalize(matrix)
+	DiagonalizeRow(&row, index)
+
+	matrix[index] = row
+
+	Normalize(matrix)
+}
+
+func StraightRow(matrix [size][size]int32, index int) [size]int32 {
+	Normalize(&matrix)
+	row := matrix[index]
 	var currArr [size]int32
 
 	position := 0
